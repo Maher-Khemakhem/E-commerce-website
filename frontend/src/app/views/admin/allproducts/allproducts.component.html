@@ -1,0 +1,50 @@
+
+
+
+<button type="button" class="btn btn-outline-primary" (click)="openModel()">Add product</button>
+<!--
+<div *ngIf="alertMessage" class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+    {{ alertMessage }}
+    <button type="button" class="btn-close" (click)="alertMessage = ''" aria-label="Close"></button>
+  </div>
+-->
+  
+
+<div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h2 class="">Article list</h2>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Title</th>
+                    <th scope="col">Moyenne</th>
+                    <th scope="col">NBRatings</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Categorie ID</th>
+                    <th scope="col">Type ID</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let article of Articles; let i = index">
+                    <th scope="row">{{article.title}}</th>
+                    <td>{{article.moyenne}}</td>
+                    <td>{{article.nbratings}}</td>
+                    <td>{{article.description}}</td>
+                    <td><img [src]="'http://127.0.0.1:8000/api/images/' + article.image" alt="Image" class="img-fluid" /></td>
+                    <td>{{article.categorie_id}}</td>
+                    <td>{{article.type_id}}</td>
+                    <td>
+                        <button type="button" class="btn btn-success" (click)="openUpdate(article.id)">Edit</button>
+                        <button type="button" class="btn btn-danger" (click)="delete(article.id, i)">Delete</button>
+                        <button type="button" class="btn btn-info" (click)="stats(article.id)">Stats</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<ngb-pagination [collectionSize]="totalCount" [pageSize]="limit" [(page)]="page" aria-label="Default pagination" (pageChange)="loadArticles()"></ngb-pagination>

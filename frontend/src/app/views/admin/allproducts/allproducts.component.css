@@ -1,0 +1,12 @@
+img{
+    height: 60px;
+    width: 60px;
+}
+button{
+    margin: 5px;
+}
+.error-snackbar {
+    background-color: #f44336; /* Red color for error */
+    color: white; /* White text */
+  }
+  

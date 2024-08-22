@@ -1,0 +1,39 @@
+
+<button type="button" class="btn btn-outline-primary" (click)="openModel()">Add product</button>
+<!--
+<div *ngIf="alertMessage" class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+    {{ alertMessage }}
+    <button type="button" class="btn-close" (click)="alertMessage = ''" aria-label="Close"></button>
+  </div>
+-->
+  
+
+<div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+        <h2 class="">Article list</h2>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">name</th>
+                    <th scope="col">Description</th>
+                    
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let categorie of Categories; let i = index">
+                    <th scope="row">{{categorie.id}}</th>
+                    <td>{{categorie.name}}</td>
+                    <td>{{categorie.description}}</td>
+                    <td>
+                        <!--<button type="button" class="btn btn-success" (click)="openUpdate(categorie.id)">Edit</button>-->
+                        <button type="button" class="btn btn-danger" (click)="delete(categorie.id, i)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

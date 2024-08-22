@@ -1,0 +1,31 @@
+
+<div class="alert alert-success" role="alert" *ngIf="message">
+    This is a success alert—check it out!
+  </div>
+  <div id="myModal">
+    <button type="button" class="btn btn-danger" (click)="closeModel()">X</button>
+    <div class="mah">
+      
+      
+      <form [formGroup]="myForm" class="mahran" (ngSubmit)="onSubmit()">
+        <h1>Add Categorie</h1>
+    
+        <div class="example-container">
+          <mat-form-field appearance="outline">
+            <mat-label>Enter categorie name</mat-label>
+            <input matInput placeholder="Article Name" formControlName="name" required>
+            <mat-error *ngIf="myForm.get('name').invalid && myForm.get('name').touched">You have to enter a name</mat-error>
+          </mat-form-field>
+        </div>
+        <div>
+        <mat-form-field>
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="description" required minlength="5"></textarea>
+          <mat-error *ngIf="myForm.get('description').invalid && !myForm.get('description').hasError('minlength')">You have to fill the description</mat-error>
+          <mat-error *ngIf="myForm.get('description').hasError('minlength')">The minimum length is 5</mat-error>
+        </mat-form-field>
+      </div>
+        <button class="btn btn-primary" type="submit" [disabled]="myForm.invalid" >Add Product</button>
+      </form>
+    </div>
+    </div>

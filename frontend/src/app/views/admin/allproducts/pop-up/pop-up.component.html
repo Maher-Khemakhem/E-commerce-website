@@ -1,0 +1,88 @@
+<div class="alert alert-success" role="alert" *ngIf="message">
+  This is a success alert—check it out!
+</div>
+<div id="myModal">
+  <button type="button" class="btn btn-danger" (click)="closeModel()">X</button>
+  <div class="mah">
+    <img [src]="imageUrl ? imageUrl : 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4b/User-Pict-Profil.svg/1365px-User-Pict-Profil.svg.png'" class="selected-image">
+    
+    <form [formGroup]="myForm" class="mahran" (ngSubmit)="onSubmit()">
+      <h1>Add Article</h1>
+  
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter Article name</mat-label>
+          <input matInput placeholder="Article Name" formControlName="title" required>
+          <mat-error *ngIf="myForm.get('title').invalid && myForm.get('title').touched">You have to enter a name</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Price</mat-label>
+          <input matInput placeholder="Price" formControlName="price" required>
+          <mat-error *ngIf="myForm.get('price').invalid && myForm.get('price').touched">You have to enter a price</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter moyenne</mat-label>
+          <input matInput placeholder="0" formControlName="moyenne" required>
+          <mat-error *ngIf="myForm.get('moyenne').invalid && myForm.get('moyenne').touched">You have to enter a moyenne</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <div class="example-container">
+        <mat-form-field appearance="outline">
+          <mat-label>Enter nbratings</mat-label>
+          <input matInput placeholder="0" formControlName="nbratings" required>
+          <mat-error *ngIf="myForm.get('nbratings').invalid && myForm.get('nbratings').touched">You have to enter a nbratings</mat-error>
+        </mat-form-field>
+      </div>
+  
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description" required minlength="5"></textarea>
+        <mat-error *ngIf="myForm.get('description').invalid && !myForm.get('description').hasError('minlength')">You have to fill the description</mat-error>
+        <mat-error *ngIf="myForm.get('description').hasError('minlength')">The minimum length is 5</mat-error>
+      </mat-form-field>
+      
+  
+      
+      <div class="input-box">
+        <button type="button" mat-raised-button (click)="fileInput.click()" class="btn btn-secondary">Choose File</button>
+        <input hidden (change)="onFileSelected($event)" #fileInput type="file" id="file">
+        <p *ngIf="fileName">{{fileName}}</p>
+      </div>
+      <br>
+      
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Type ID</mat-label>
+          <input matInput formControlName="type_id" required>
+          <mat-error>Type ID is required.</mat-error>
+          <div *ngIf="typeError">
+            <mat-error>Type ID does not exist.</mat-error>
+          </div>
+          
+        </mat-form-field>
+      </div>
+      
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Category ID</mat-label>
+          <input matInput formControlName="categorie_id" required>
+          <mat-error>Category ID is required</mat-error>
+          <div *ngIf="categoryError">
+            <mat-error>Category ID does not exist.</mat-error>
+          </div>
+        </mat-form-field>
+      </div>
+    
+      
+  
+      <button class="btn btn-primary" type="submit" [disabled]="myForm.invalid" >Add Product</button>
+    </form>
+  </div>
+  </div>

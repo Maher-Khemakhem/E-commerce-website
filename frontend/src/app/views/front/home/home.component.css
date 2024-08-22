@@ -1,0 +1,124 @@
+.container{
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0;
+}
+.form-section {
+  flex: 1;
+}
+
+.product-section {
+  margin-left: 10%;
+  flex: 2;
+}
+
+.mahran{
+    text-align: center;
+    margin: 10%;
+  }
+  
+  .mah{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  .selected-image{
+    margin: 15%;
+    width: 20%;
+    height: 20%;
+  }
+  
+  .checked{
+    color: orange;
+  }
+  mat-icon{
+    cursor: pointer;
+  }
+.product{
+  text-align: center;
+  
+}
+
+.product .pro{
+  width: 200px;
+  min-width: 250px;
+  padding: 10px 12px;
+  background-color: white;
+  border: 1px solid #cce7d0;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.02);
+  margin: 15px 0;
+  transition: 0.2s ease;
+}
+
+.product .pro:hover{
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.06);
+}
+
+.product .pro img{
+  width: 100%;
+  height: 300px;
+  border-radius: 20px;
+}
+
+.products-section{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+i {
+  position: relative;
+  display: inline-block;
+  font-size: 1.5rem;
+  padding-right: 0.1rem;
+  color: #d3d3d3;
+}
+
+.filled {
+  color: red;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.bi-heart {
+  position: relative;
+  display: inline-block;
+}
+
+.bi-heart-fill.filled {
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+  color: red; /* Filled heart color */
+  display: block;
+}
+.ccc{
+  size: 200px;
+}
+aside {
+  width: 30%;
+  margin: 15px;
+  padding: 15px;
+  height: 300px;
+  width: 200px;
+  float: right;
+  font-style: italic;
+  background-color: lightgray;
+  align-items: center;
+  border-radius: 10px;
+}
+p{
+  font-size: 20px;
+  color: black;
+  text-align: center;
+}
+.btn.btn-info{
+  text-align: center;
+  align-self: center;
+  margin-left: 50px;
+}

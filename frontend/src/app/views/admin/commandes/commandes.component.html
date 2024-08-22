@@ -1,0 +1,70 @@
+<div class="container">
+    <!--
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h2>Article list</h2>
+      <button type="button" class="btn btn-outline-primary" (click)="openModel()">Add product</button>
+    </div>
+  
+    <div *ngIf="alertMessage" class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
+      {{ alertMessage }}
+      <button type="button" class="btn-close" (click)="alertMessage = ''" aria-label="Close"></button>
+    </div>
+    -->
+    <div class="table-responsive">
+      <table mat-table [dataSource]="commandes" class="mat-elevation-z8">
+        <ng-container matColumnDef="items">
+          <th mat-header-cell *matHeaderCellDef> Items </th>
+          <td mat-cell *matCellDef="let commande">
+            <mat-card>
+              <table mat-table [dataSource]="commande.cart_items" class="mat-elevation-z8">
+                <ng-container matColumnDef="image">
+                  <th mat-header-cell *matHeaderCellDef> Image </th>
+                  <td mat-cell *matCellDef="let product">
+                    <img [src]="'http://127.0.0.1:8000/api/images/' + product.image" alt="Image" class="img-fluid" />
+                  </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="title">
+                  <th mat-header-cell *matHeaderCellDef> Title </th>
+                  <td mat-cell *matCellDef="let product"> {{ product.title }} </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="quantity">
+                  <th mat-header-cell *matHeaderCellDef> Quantity </th>
+                  <td mat-cell *matCellDef="let product"> {{ product.quantity }} </td>
+                </ng-container>
+  
+                <ng-container matColumnDef="price">
+                  <th mat-header-cell *matHeaderCellDef> Price </th>
+                  <td mat-cell *matCellDef="let product"> {{ product.price }} </td>
+                </ng-container>
+  
+                <tr mat-header-row *matHeaderRowDef="['image', 'title', 'quantity', 'price']"></tr>
+                <tr mat-row *matRowDef="let row; columns: ['image', 'title', 'quantity', 'price'];"></tr>
+              </table>
+            </mat-card>
+          </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="cardType">
+          <th mat-header-cell *matHeaderCellDef> Card Type </th>
+          <td mat-cell *matCellDef="let commande"> {{ commande.card_type }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="cardName">
+          <th mat-header-cell *matHeaderCellDef> Card Name </th>
+          <td mat-cell *matCellDef="let commande"> {{ commande.card_name }} </td>
+        </ng-container>
+  
+        <ng-container matColumnDef="cardNumber">
+          <th mat-header-cell *matHeaderCellDef> Card Number </th>
+          <td mat-cell *matCellDef="let commande"> {{ commande.card_number }} </td>
+        </ng-container>
+  
+        <tr mat-header-row *matHeaderRowDef="['items', 'cardType', 'cardName', 'cardNumber']"></tr>
+        <tr mat-row *matRowDef="let row; columns: ['items', 'cardType', 'cardName', 'cardNumber']"></tr>
+      </table>
+    </div>
+  </div>
+  <ngb-pagination [collectionSize]="totalCount" [pageSize]="limit" [(page)]="page" aria-label="Default pagination" (pageChange)="loadcommandes()"></ngb-pagination>
+  

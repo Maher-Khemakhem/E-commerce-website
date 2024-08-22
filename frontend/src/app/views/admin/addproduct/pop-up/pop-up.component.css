@@ -1,0 +1,21 @@
+.mahran{
+  text-align: center;
+  margin: 10%;
+}
+
+.mah{
+  display: flex;
+  justify-content: space-between;
+}
+.selected-image{
+  margin: 100px;
+  width: 200px;
+  height: 300px;
+}
+
+.checked{
+  color: orange;
+}
+mat-icon{
+  cursor: pointer;
+}

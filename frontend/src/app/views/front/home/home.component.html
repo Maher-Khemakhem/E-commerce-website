@@ -1,0 +1,90 @@
+
+<div class="container mt-3">
+  <aside *ngIf="authenticated">
+    <p>Filter by:</p>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="row g-3">
+      <div class="col-12">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Select Type</mat-label>
+          <mat-select formControlName="type_id">
+            <mat-option *ngFor="let type of types" [value]="type.id">
+              {{ type.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    
+      <div class="col-12">
+        <mat-form-field appearance="fill" class="w-100">
+          <mat-label>Select Category</mat-label>
+          <mat-select formControlName="categorie_id">
+            <mat-option *ngFor="let categorie of categories" [value]="categorie.id">
+              {{ categorie.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    
+      <div class="col-12">
+        <button type="submit" mat-raised-button color="primary" class="btn btn-info">Submit</button>
+      </div>
+    </form>
+</aside>
+
+  <div class="product-section mt-3">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h2>Article List</h2>
+    </div>
+    
+  
+    <div class="products-section">
+      
+      <section class="product" *ngFor="let article of articles; let i = index" (click)="goDetails(article.id,i)">
+        
+        
+          <div class="pro">
+            <img [src]="'http://127.0.0.1:8000/api/images/' + article.image" alt="Image" class="img-fluid" />
+            <div class="des">
+              <h1>{{  article.title  }}</h1>
+             
+              <!--
+              <mat-icon *ngFor="let icon of maxRatingArr; let index = index"
+                [ngClass]="{ 'text-warning': selectedStars[i] > index+0.5}"
+                >
+                star
+              </mat-icon>
+              -->
+              
+              
+              
+              
+              <!--
+              <ng-template #t let-fill="fill">
+                <i class="bi bi-heart position-relative">
+                  
+                  <i class="bi bi-heart-fill" [ngStyle]="{ 'width.%': fill * 100 }" [ngClass]="{'filled': currentRate>0}"></i>
+                </i>
+              </ng-template>
+              -->
+              <ng-template #t let-fill="fill">
+                <i class="bi-heart-fill">
+                  <i *ngIf="fill > 0" class="bi-heart-fill filled" [style.width.%]="fill"></i>
+                </i>
+              </ng-template>
+              <ngb-rating
+                [(rate)]="selectedStars[article.id]"
+                [starTemplate]="t"
+                [readonly]="true"
+                [max]="5"
+                [ariaValueText]="ariaValueText"
+              ></ngb-rating>
+              <p>{{article.price}}$</p>
+            </div>
+        </div>
+      </section>
+      
+    </div>
+    
+    <ngb-pagination [collectionSize]="totalCount" [pageSize]="limit" [(page)]="page" aria-label="Default pagination" (pageChange)="onSubmit()"></ngb-pagination>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+.mat-elevation-z8 {
+    margin: 20px 0;
+}
+
+img.img-fluid {
+    max-width: 100px;
+    height: auto;
+}
+
+table mat-table {
+    width: 100%;
+}

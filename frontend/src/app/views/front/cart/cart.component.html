@@ -1,0 +1,87 @@
+<div class="card">
+  <div class="row">
+    <div class="col-md-8 cart">
+      <div class="title">
+        <div class="row">
+          <div class="col">
+            <h4><b>Shopping Cart</b></h4>
+          </div>
+        </div>
+      </div>
+      <div *ngFor="let article of articles; let index = index"> 
+        <div class="row border-top border-bottom">
+          <div class="row main align-items-center">
+            <div class="col-2"><img [src]="'http://127.0.0.1:8000/api/images/' + article.image" class="img-fluid" /></div>
+            <div class="col">
+              <div class="row">{{ article.title }}</div>
+            </div>
+            <div class="col">
+              <a (click)="nakas(article.id)" class="btn-pointer">-</a>
+              <span class="border">{{ article.quantity }}</span>
+              <a (click)="zid(article.id)" class="btn-pointer">+</a>
+            </div>
+            <div class="col">&euro;{{ article.price }}<span class="close" (click)="ne7i(article.id)">&#10005;</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="back-to-shop"><a routerLink="/">&leftarrow;</a><span class="text-muted">Back to shop</span></div>
+    </div>
+
+    <div class="col-md-4 summary">
+      <div class="payment-info">
+        <div class="d-flex justify-content-between align-items-center">
+          <span>Card details</span><img class="rounded" src="https://i.imgur.com/WU501C8.jpg" width="30">
+        </div>
+        <span class="type d-block mt-3 mb-1">Card type</span>
+        <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label class="radio">
+              <input type="radio" formControlName="card" value="mastercard" required>
+              <span><img width="30" src="https://img.icons8.com/color/48/000000/mastercard.png"/></span>
+            </label>
+            <label class="radio">
+              <input type="radio" formControlName="card" value="visa" required>
+              <span><img width="30" src="https://img.icons8.com/officel/48/000000/visa.png"/></span>
+            </label>
+            <label class="radio">
+              <input type="radio" formControlName="card" value="amex" required>
+              <span><img width="30" src="https://img.icons8.com/ultraviolet/48/000000/amex.png"/></span>
+            </label>
+            <label class="radio">
+              <input type="radio" formControlName="card" value="paypal" required>
+              <span><img width="30" src="https://img.icons8.com/officel/48/000000/paypal.png"/></span>
+            </label>
+          </div>
+          
+          <div *ngIf="myForm?.get('card')?.invalid && myForm?.get('card')?.touched" class="text-danger">
+            Please select a card type.
+          </div>
+
+          <div>
+            <label class="credit-card-label">Name on card</label>
+            <input type="text" class="form-control credit-inputs" formControlName="nameOnCard" placeholder="Name">
+            <div *ngIf="myForm?.get('nameOnCard')?.invalid && myForm?.get('nameOnCard')?.touched" class="text-danger">
+              Name on card is required.
+            </div>
+          </div>
+          
+          <div>
+            <label class="credit-card-label">Card number</label>
+            <input type="text" class="form-control credit-inputs" formControlName="cardNumber" placeholder="0000 0000 0000 0000">
+            <div *ngIf="myForm?.get('cardNumber')?.invalid && myForm?.get('cardNumber')?.touched" class="text-danger">
+              Card number is required and must be valid.
+            </div>
+          </div>
+
+          <hr class="line">
+
+          <div class="d-flex justify-content-between information">
+            <span>Total(Incl. taxes)</span><span>${{ total_price }}</span>
+          </div>
+          
+          <button type="submit" class="btn">CHECKOUT</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

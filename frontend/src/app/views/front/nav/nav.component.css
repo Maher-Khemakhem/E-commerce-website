@@ -1,0 +1,81 @@
+.navbar {
+    padding: 1rem 1.5rem;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Center the "Cart" and "Commandes" links */
+.navbar-nav {
+    flex-direction: row;
+    margin: 0 auto; /* Centering the navigation links */
+}
+
+.navbar-nav .nav-item {
+    margin-right: 1rem;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out;
+}
+
+/* Hover effect: enlarge text and underline */
+.navbar-nav .nav-item .nav-link {
+    color: #ffffff;
+    font-size: 1rem;
+    position: relative;
+    transition: color 0.2s ease-in-out;
+}
+
+.navbar-nav .nav-item .nav-link::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #c0c0c0;
+    visibility: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.navbar-nav .nav-item .nav-link:hover::after {
+    visibility: visible;
+    width: 100%;
+}
+
+
+.navbar-dark .navbar-nav .nav-link.active {
+    color: #ffc107;
+}
+
+@media (max-width: 767.98px) {
+    .navbar-nav {
+        flex-direction: column;
+        width: 100%;
+        margin: 0;
+    }
+
+    .navbar-nav .nav-item {
+        margin-right: 0;
+        margin-bottom: 0.5rem;
+    }
+
+    .container-fluid {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
