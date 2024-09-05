@@ -1,7 +1,7 @@
 
 
 
-<button type="button" class="btn btn-outline-primary" (click)="openModel()">Add product</button>
+
 <!--
 <div *ngIf="alertMessage" class="alert alert-{{alertType}} alert-dismissible fade show" role="alert">
     {{ alertMessage }}
@@ -14,6 +14,7 @@
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h2 class="">Article list</h2>
     </div>
+    <button type="button" class="btn" (click)="openModel()">Add product</button>
     <div class="table-responsive">
         <table class="table table-striped table-bordered">
             <thead>
@@ -38,13 +39,33 @@
                     <td>{{article.categorie_id}}</td>
                     <td>{{article.type_id}}</td>
                     <td>
-                        <button type="button" class="btn btn-success" (click)="openUpdate(article.id)">Edit</button>
+                        <!--
+                        <button  type="button" class="btn btn-success" (click)="openUpdate(article.id)">Edit</button>
                         <button type="button" class="btn btn-danger" (click)="delete(article.id, i)">Delete</button>
                         <button type="button" class="btn btn-info" (click)="stats(article.id)">Stats</button>
+                        -->
+                        <button mat-icon-button color="primary" (click)="openUpdate(article.id)">
+                            <mat-icon>edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="warn" (click)="delete(article.id, i)">
+                            <mat-icon>delete</mat-icon>
+                        </button>
+                        <button mat-icon-button class="custom-chart-color" (click)="stats(article.id)">
+                            <mat-icon>bar_chart</mat-icon>
+                        </button>
                     </td>
                 </tr>
             </tbody>
         </table>
     </div>
 </div>
-<ngb-pagination [collectionSize]="totalCount" [pageSize]="limit" [(page)]="page" aria-label="Default pagination" (pageChange)="loadArticles()"></ngb-pagination>
+<!--<ngb-pagination [collectionSize]="totalCount" [pageSize]="limit" [(page)]="page" aria-label="Default pagination" (pageChange)="loadArticles()"></ngb-pagination>-->
+<div class="pagination-container">
+    <ngb-pagination 
+      [collectionSize]="totalCount" 
+      [pageSize]="limit" 
+      [(page)]="page" 
+      aria-label="Default pagination" 
+      (pageChange)="loadArticles()">
+    </ngb-pagination>
+  </div>

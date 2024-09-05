@@ -36,22 +36,26 @@ class commandeController extends Controller
 
     public function getCommande(Request $request) {
         $client_id = $request->input('client_id');
-        $skip = $request->skip;
-        $limit = $request->limit;
+        $skip = $request->input('skip', 0); // Default skip to 0 if not provided
+        $limit = $request->input('limit', 10); // Default limit to 10 if not provided
 
         if (!$client_id) {
             return response()->json([
                 'error' => 'client_id is required'
             ], 400); // Bad Request
         }
-        $totalcount = Commandes::count();
-        $commandes = Commandes::where('client_id', $client_id)->skip($skip)->take($limit)->get();
 
-        if ($commandes->isEmpty()) {
-            return response()->json([
-                'message' => 'No commandes found for this client'
-            ], 404); // Not Found
-        }
+        // Get the total count of commandes for the specific client
+        $totalcount = Commandes::where('client_id', $client_id)->where('delivered', 0)->count();
+
+        // Retrieve the commandes for the client with pagination
+        $commandes = Commandes::where('client_id', $client_id)
+            ->where('delivered', 0)
+            ->skip($skip)
+            ->take($limit)
+            ->get();
+
+
 
         return response()->json([
             'status' => true,

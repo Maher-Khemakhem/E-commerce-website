@@ -5,9 +5,11 @@
 .navbar-brand {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #ffffff;
+    color: black;
 }
-
+.navbar.navbar-expand-md.navbar-dark.mb-4{
+    background-color: #FF8100 ;
+}
 .container-fluid {
     display: flex;
     justify-content: space-between;
@@ -25,19 +27,20 @@
 }
 
 .navbar-nav .nav-item .nav-link {
-    color: #ffffff;
-    font-size: 1rem;
+    color: black;
+    font-size: 40px;
     transition: color 0.2s ease-in-out, font-size 0.2s ease-in-out;
 }
 
 /* Hover effect: enlarge text and underline */
 .navbar-nav .nav-item .nav-link {
-    color: #ffffff;
+    color: black;
     font-size: 1rem;
     position: relative;
     transition: color 0.2s ease-in-out;
+    font-family: "Candara";
 }
-
+/*
 .navbar-nav .nav-item .nav-link::after {
     content: '';
     position: absolute;
@@ -57,7 +60,7 @@
     width: 100%;
 }
 
-
+*/
 .navbar-dark .navbar-nav .nav-link.active {
     color: #ffc107;
 }
@@ -78,4 +81,36 @@
         flex-direction: column;
         align-items: flex-start;
     }
+    .navbar-nav {
+        text-align: center;
+    }
+    .navbar-nav .nav-item {
+        margin-bottom: 10px;
+    }
+    .asmimg {
+        width: 100px; /* Adjust the logo size */
+    }
+}
+.nav-item {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.nav-item:hover .nav-link,
+.nav-item:hover .ima {
+    color: #ffad5b; /* For text and possibly vector images like SVG */
+    filter: brightness(0.5) invert(1); /* For making an image like PNG appear white (optional) */
+}
+
+.ima {
+    height: 25px;
+    margin-top: 3px;
+}
+.asmimg{
+    object-fit: contain;
+    height: 70px;
+}
+.navbar-brand{
+    height: 30px;
 }

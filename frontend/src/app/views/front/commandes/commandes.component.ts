@@ -10,11 +10,11 @@ import { SharedserviceService } from 'src/app/service/sharedservice.service';
 })
 export class CommandesComponent implements OnInit {
   client_id!: any;
-  commandes: any[] = [];
-  page: number = 1;
-  limit: number = 2;
-  skip: number = 0;
-  totalCount: number = 0;
+  commandes:any=[];
+  page:any=1;
+  limit:any=2;
+  skip:any;
+  totalCount:any;
 
   constructor(private sharedService: SharedserviceService, private crudService: CrudService,private snackBar:MatSnackBar) { }
 
@@ -26,31 +26,33 @@ export class CommandesComponent implements OnInit {
   }
 
   loadCommandes(): void {
-    this.skip = (this.page - 1) * this.limit;
-
+    
+      this.skip = (this.page-1)*this.limit;
+    
     const data = {
-      client_id: this.client_id,
-      limit: this.limit,
-      skip: this.skip,
-    };
-
+      'client_id': this.client_id,
+      'limit' : this.limit,
+      'skip': this.skip,
+    }
+    
+    console.log(data);
     this.crudService.getCommande(data).subscribe(
       (res: any) => {
-
-        this.commandes = res.data.filter((commande: any) => commande.delivered === 0);
+        console.log(res);
+        this.commandes = res.data
         console.log(this.commandes);
         //this.commandes = res.data;
         console.log(this.commandes.length);
-        this.totalCount=this.commandes.length;
+        this.totalCount=res.totalcount;
         this.commandes.forEach((commande: any) => {
-          commande.cart_items = JSON.parse(commande.cart_items);
-          
+          commande.cart_items = JSON.parse(commande.cart_items); 
         });
 
         //this.totalCount = this.commandes.length;
        
       },
       (error: any) => {
+        console.log(error);
         this.showErrorSnackbar("You have no commands until now");
         return;
       }

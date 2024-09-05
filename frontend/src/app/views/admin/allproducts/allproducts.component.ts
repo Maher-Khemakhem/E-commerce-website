@@ -67,7 +67,7 @@ export class AllproductsComponent implements OnInit{
       if (result) {
         this.errorMessage = true;
         //this.showAlert('Article added successfully', 'success');
-        this.showErrorSnackbar ('Article Updated successfully');
+        this.showErrorSnackbar ('Article added successfully');
         this.loadArticles();
       }
     });

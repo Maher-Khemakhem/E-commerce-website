@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CrudService } from 'src/app/service/crud.service';
 import { Chart,registerables } from 'chart.js';
 import { Emitters } from '../emitters/emitters';
@@ -32,7 +32,8 @@ export class DetailsComponent implements OnInit{
   articleIndex:any;
   note:any;
   client_id:any;
-  constructor(private sharedService:SharedserviceService,private route: ActivatedRoute,private crudService:CrudService,private emitterService: EmitterService,private snackBar:MatSnackBar){
+  chart2:any;
+  constructor(private sharedService:SharedserviceService,private route: ActivatedRoute,private crudService:CrudService,private emitterService: EmitterService,private snackBar:MatSnackBar,private router: Router){
     
   }
 
@@ -121,7 +122,7 @@ export class DetailsComponent implements OnInit{
       this.client_id = null;  
     }
   });
-
+  
   this.crudService.getArticle(this.article_id).subscribe(
     (res) => {
       this.article = res.data;
@@ -307,9 +308,12 @@ export class DetailsComponent implements OnInit{
     
     //this.user_id();
     //console.log(this.client_id);
-    
+    if(this.client_id==-1){
+      this.showErrorSnackbar("You have to login before doing this operation");
+    }
     console.log(this.article.id);
     console.log(this.articleIndex);
+    console.log(this.client_id);
     console.log(this.previousSelection[this.article_id]);
     if (this.previousSelection[this.article_id] === 0) {
       this.selectedStars[this.article_id] = index + 1;
@@ -322,6 +326,7 @@ export class DetailsComponent implements OnInit{
 
       this.crudService.addRating(formData).subscribe(
         (res: any) => {
+          this.showErrorSnackbar("Rating added successfully");
           console.log('Rating added successfully');
           this.ratings.push(res.data);
         },
@@ -352,7 +357,8 @@ export class DetailsComponent implements OnInit{
 
       this.crudService.updateRating(rate_id, formData).subscribe(
         () => {
-          console.log('Rating updated successfully');
+          this.showErrorSnackbar("Rating updated successfully");
+          
         },
         (err: any) => {
           console.log(err);
@@ -377,6 +383,7 @@ export class DetailsComponent implements OnInit{
     console.log("rate_id=", rate_id);
     this.crudService.deleteRating(rate_id).subscribe(
       () => {
+        
         console.log('Rating deleted successfully');
         this.selectedStars[index] = 0;
         this.previousSelection[index] = 0;
@@ -395,19 +402,23 @@ export class DetailsComponent implements OnInit{
       'quantity': 1,
       'image': this.article.image,
     };
-  
-    this.crudService.addToCart(b).subscribe({
-      next: () => {
-        this.showErrorSnackbar("item added to cart successfully");
+    if(this.client_id==-1){
+      this.showErrorSnackbar("You have to login before doing this operation");
+    }else{
+      this.crudService.addToCart(b).subscribe({
+        next: () => {
+          this.showErrorSnackbar("item added to cart successfully");
+          
+        },
+        error: (err) => {
+          this.showErrorSnackbar("Item already added");
+        }
+      });
         
-      },
-      error: (err) => {
-        this.showErrorSnackbar("Item already added");
-      }
-    });
       
+      this.sharedService.setArticles(this.article);
+    }
     
-    this.sharedService.setArticles(this.article);
     //Emitters.emitterr.emit(this.article);
   }
   showErrorSnackbar(message: string): void {

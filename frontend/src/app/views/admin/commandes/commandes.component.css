@@ -10,3 +10,34 @@ img.img-fluid {
 table mat-table {
     width: 100%;
 }
+.pagination-container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Override the Bootstrap pagination styles */
+  .pagination-container .pagination .page-item .page-link {
+    color: orange !important; /* Text color */
+    border-color: orange !important; /* Border color */
+  }
+  
+  /* Active page styling */
+  .pagination-container .pagination .page-item.active .page-link {
+    background-color: orange !important; /* Active page background */
+    border-color: orange !important; /* Active page border */
+    color: white !important; /* Active page text color */
+  }
+  
+  /* Hover and focus state styling */
+  .pagination-container .pagination .page-item .page-link:hover,
+  .pagination-container .pagination .page-item .page-link:focus {
+    background-color: rgba(255, 165, 0, 0.2) !important; /* Light orange background on hover */
+    color: orange !important; /* Text color on hover */
+  }
+  
+  /* Disabled state styling */
+  .pagination-container .pagination .page-item.disabled .page-link {
+    color: #cccccc !important; /* Grey color for disabled */
+    background-color: transparent !important; /* No background for disabled */
+    border-color: transparent !important; /* No border for disabled */
+  }

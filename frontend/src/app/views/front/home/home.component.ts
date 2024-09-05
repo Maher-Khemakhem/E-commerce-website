@@ -329,8 +329,12 @@ export class HomeComponent implements OnInit{
     console.log(this.ress.id);
     Emitters.emitterr.emit(this.ress.id);
     */
+    if(!this.authenticated){
+      this.router.navigate(['/details', id,articleIndex,-1]);
+    }else{
+      this.router.navigate(['/details', id,articleIndex,this.ress.id]);
+    }
     
-    this.router.navigate(['/details', id,articleIndex,this.ress.id]);
   }
 
 

@@ -40,12 +40,12 @@ body{
 }
 .summary{
     /*background-color: #ddd;*/
-    background-color: blue;
+    background-color: #FF8100;
     border-top-right-radius: 1rem;
     border-bottom-right-radius: 1rem;
     padding: 4vh;
     /*color: rgb(65, 65, 65);*/
-    color: blue;
+    color: #FF8100;
 }
 @media(max-width:767px){
     .summary{
@@ -157,11 +157,11 @@ a:hover{
     cursor: pointer;
     text-decoration: none; /* Optional: removes underline from the link */
     padding: 5px 10px; /* Optional: adds some padding for better clickability */
-    color: #007bff; /* Optional: sets the text color */
+    color: #FF8100; /* Optional: sets the text color */
   }
   
   .btn-pointer:hover {
-    color: #0056b3; /* Optional: changes color on hover */
+    color: #FF8100; /* Optional: changes color on hover */
   }
 
 
@@ -174,7 +174,7 @@ a:hover{
 
 /**/
 .payment-info {
-    background: blue;
+    background: #FF8100;
     padding: 10px;
     border-radius: 6px;
     color: #fff;
@@ -232,18 +232,18 @@ a:hover{
   
   label.radio input:checked + span {
     border-color: #fff;
-    background-color: blue;
+    background-color: #FF8100;
     color: #fff;
   }
   
   .credit-inputs {
-    background: rgb(102,102,221);
-    color: #fff !important;
-    border-color: rgb(102,102,221);
+    background: #ffad5b(102,102,221);
+    color: black !important;
+    border-color: #ffad5b(102,102,221);
   }
   
   .credit-inputs::placeholder {
-    color: #fff;
+    color: #ffad5b(102,102,221);
     font-size: 13px;
   }
   
@@ -253,12 +253,12 @@ a:hover{
   }
   
   .form-control.credit-inputs:focus {
-    background: rgb(102,102,221);
-    border: rgb(102,102,221);
+    background: #ffad5b(102,102,221);
+    border: #ffad5b(102,102,221);
   }
   
   .line {
-    border-bottom: 1px solid rgb(102,102,221);
+    border-bottom: 1px solid #ffad5b(102,102,221);
   }
   
   .information span {

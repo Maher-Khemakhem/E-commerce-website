@@ -1,5 +1,6 @@
 .container{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   margin: 0;
@@ -107,18 +108,93 @@ aside {
   height: 300px;
   width: 200px;
   float: right;
-  font-style: italic;
-  background-color: lightgray;
+  
+  font-family: "Montserrat";
+  background-color: white;
   align-items: center;
   border-radius: 10px;
 }
 p{
   font-size: 20px;
+  margin-bottom: 15%;
   color: black;
   text-align: center;
+  font-family: "Montserrat";
 }
-.btn.btn-info{
-  text-align: center;
-  align-self: center;
-  margin-left: 50px;
+
+.btn {
+  position: relative;
+  margin-left: 35px;
+  overflow: hidden;
+  background-color: orange; /* Initial background color */
+  color: black; /* Initial text color */
+  border: 2px solid transparent; /* Initial border color (transparent) */
+  transition: color 0.3s, border-color 0.3s; /* Transition for color and border */
+}
+
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 2px solid black; /* Border color on hover */
+  transform: scaleX(0); /* Start with 0 scale */
+  transform-origin: bottom right; /* Origin for the scale effect */
+  transition: transform 0.3s; /* Transition for the border */
+}
+
+.btn:hover {
+  color: black; /* Text color on hover */
+  border-color: black; /* Border color on hover */
+}
+
+.btn:hover::before {
+  transform: scaleX(1); /* Scale to full width on hover */
+}
+.img-fluid{
+  object-fit: contain;
+  height: 150px;
+width: 100px;
+}
+@media (max-width: 770px) {
+  aside {
+      margin-left: 28%;
+  }
+  .products-section{
+    margin-left: 15%;
+  }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* Override the Bootstrap pagination styles */
+.pagination-container .pagination .page-item .page-link {
+  color: orange !important; /* Text color */
+  border-color: orange !important; /* Border color */
+}
+
+/* Active page styling */
+.pagination-container .pagination .page-item.active .page-link {
+  background-color: orange !important; /* Active page background */
+  border-color: orange !important; /* Active page border */
+  color: white !important; /* Active page text color */
+}
+
+/* Hover and focus state styling */
+.pagination-container .pagination .page-item .page-link:hover,
+.pagination-container .pagination .page-item .page-link:focus {
+  background-color: rgba(255, 165, 0, 0.2) !important; /* Light orange background on hover */
+  color: orange !important; /* Text color on hover */
+}
+
+/* Disabled state styling */
+.pagination-container .pagination .page-item.disabled .page-link {
+  color: #cccccc !important; /* Grey color for disabled */
+  background-color: transparent !important; /* No background for disabled */
+  border-color: transparent !important; /* No border for disabled */
 }

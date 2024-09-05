@@ -9,14 +9,12 @@
 <div id="wrapper" *ngIf="authenticated">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav sidebar accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" routerLink="/admin/dashboard">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-laugh-wink"></i>
-            </div>
-            <div class="sidebar-brand-text mx-3">Student management</div>
+        <a  routerLink="/admin/dashboard">
+           
+            <div class="asmimg"><img src="../../../assets/asmm.png"></div>
         </a>
 
         <!-- Divider -->
@@ -41,21 +39,23 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         
-
+        <hr class="sidebar-divider my-0">
         <!-- Nav Item - Charts -->
         <li class="nav-item">
             <a class="nav-link" routerLink="/admin/allproducts">
-                <i class="fas fa-fw fa-users"></i>
+                <img src="../../../assets/productt.png" class="ima">
                 <span>All Products</span></a>
         </li>
+        <hr class="sidebar-divider my-0">
         <li class="nav-item">
             <a class="nav-link" routerLink="/admin/categories">
-                <i class="fas fa-fw fa-users"></i>
+                <img src="../../../assets/categorie.png" class="ima">
                 <span>All categories</span></a>
         </li>
+        <hr class="sidebar-divider my-0">
         <li class="nav-item">
             <a class="nav-link" routerLink="/admin/commandes">
-                <i class="fas fa-fw fa-users"></i>
+                <img src="../../../assets/commande.png" class="ima">
                 <span>All commandes</span></a>
         </li>
         <!-- Nav Item - Tables -->
@@ -96,7 +96,7 @@
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
                             aria-label="Search" aria-describedby="basic-addon2">
                         <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
+                            <button class="btn" type="button">
                                 <i class="fas fa-search fa-sm"></i>
                             </button>
                         </div>
@@ -140,7 +140,7 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                             <img class="img-profile rounded-circle"
                                 src="assets/admin/img/undraw_profile.svg">
                         </a>

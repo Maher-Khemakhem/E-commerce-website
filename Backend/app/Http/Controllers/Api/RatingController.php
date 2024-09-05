@@ -33,7 +33,7 @@ class RatingController extends Controller
         $validatedData = $request->validate([
             'note' => 'required|numeric|min:0|max:5',
             'article_id' => 'required|exists:articles,id',
-            'client_id' => 'required|exists:client,id',
+            'client_id' => 'required|exists:users,id',
         ]);
 
         $rating = Rating::create($validatedData);
@@ -80,7 +80,7 @@ class RatingController extends Controller
         $validatedData = $request->validate([
             'note' => 'required|numeric|min:0|max:5',
             'article_id' => 'required|exists:articles,id',
-            'client_id' => 'required|exists:client,id',
+            'client_id' => 'required|exists:users,id',
         ]);
 
         $rating->update($validatedData);

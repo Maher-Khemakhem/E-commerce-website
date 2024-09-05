@@ -28,6 +28,7 @@ export class CategoriesComponent implements OnInit {
   delete(id:any,i:any){
     console.log(id);
     this.categorieCrudService.deleteCategorie(id).subscribe(res=>{
+      this.showErrorSnackbar("Category deleted successfully");
       this.Categories.splice(i,1);
       //this.showErrorSnackbar ('Categorie Deleted successfully');
     })

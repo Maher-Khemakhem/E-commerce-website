@@ -1,0 +1,43 @@
+#accordionSidebar{
+    background-color:#FF8100 ;
+}
+.asmimg img{
+    margin-left: 17%;
+    width: 70%;
+    height: 70%;
+}
+@media(max-width:770px){
+    .asmimg img{
+        margin-left: 17%;
+        width: 70%;
+        height: 70%;
+    }
+}
+.nav-link{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.ima{
+    height: 20px;
+}
+.nav-item{
+    margin-left: 15%;
+}
+.nav-item.active{
+    margin-top: 30px;
+}
+.btn{
+    background-color:#FF8100 ;
+}
+.nav-item:hover,
+.nav-item:hover .nav-link,
+.nav-item:hover .nav-link span,
+.nav-item:hover .nav-link i,
+.nav-item:hover .nav-link img {
+    color: white;
+}
+
+.nav-item:hover .nav-link img {
+    filter: brightness(0) invert(1); /* This will invert image colors to white */
+}

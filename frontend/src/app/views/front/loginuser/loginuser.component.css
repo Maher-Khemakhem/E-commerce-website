@@ -11,3 +11,10 @@
 .pt-1.mb-4 {
   width: 300px; /* Same width as the form fields to keep everything aligned */
 }
+.card{
+  height: 600px;
+}
+
+.imm{
+  height: 80px;
+}

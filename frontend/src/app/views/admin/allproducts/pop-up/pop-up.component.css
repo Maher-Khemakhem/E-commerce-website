@@ -1,25 +1,86 @@
-.mahran{
-    text-align: center;
-    margin: 10%;
+.mahran {
+  text-align: center;
+  margin: 10%;
+}
+
+.mah {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.selected-image {
+  object-fit: contain;
+  mix-blend-mode: multiply;
+  margin-left: 10%;
+  width: 40%;
+  height: 40%;
+}
+
+.checked {
+  color: orange;
+}
+
+mat-icon {
+  cursor: pointer;
+}
+
+button {
+  margin: 5px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .mahran {
+    margin: 5%;
   }
   
-  .mah{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+  .mah {
+    flex-direction: column;
+    justify-content: center;
   }
-  .selected-image{
-    margin: 15%;
-    width: 20%;
-    height: 20%;
+
+  .selected-image {
+    margin-left: 0;
+    width: 80%;
+    height: auto;
   }
-  
-  .checked{
-    color: orange;
+}
+
+@media (max-width: 770px) {
+  .mahran {
+    margin: 2%;
   }
-  mat-icon{
-    cursor: pointer;
+
+  .mah {
+    justify-content: center;
   }
-  button{
-    margin: 5px;
+
+  .selected-image {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
   }
+
+  button {
+    width: 100%;
+    margin: 2px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .mahran {
+    margin: 1%;
+  }
+
+  .selected-image {
+    width: 100%;
+    height: auto;
+    margin-left: 0;
+  }
+
+  button {
+    width: 100%;
+    margin: 1px 0;
+  }
+}
